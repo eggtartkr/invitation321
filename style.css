@@ -1,0 +1,403 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap');
+
+body{
+font-family:'Gowun Dodum', sans-serif;
+}
+
+/* style.css 수정 */
+
+h1 {
+  font-family: 'Jua', sans-serif !important; /* !important 추가 */
+  font-size: 26px !important;                /* !important 추가 */
+  margin-bottom: 30px !important;  
+}
+
+/* 헤더 h1은 더 커야 하니까 이것도 수정 */
+.header-text h1 {
+  font-size: 40px !important;                /* !important 추가 */
+  line-height: 1.3;
+  margin: 20px 0;
+}
+
+/* header */
+
+.main-header{
+position: relative!important;
+overflow: hidden!important;
+display: flex;
+min-height:100vh;
+background-image:linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.3)),url("./images/메인.jpeg");
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:flex-end;
+justify-content:center;
+text-align:center;
+}
+
+.header-text{
+color:white;
+margin-bottom:100px;
+}
+
+.header-text h1{
+font-size:40px;
+line-height:1.3;
+margin:20px 0;
+}
+
+/* 2. 하트 스타일 (이걸로 덮어씌우세요) */
+.heart-drop {
+  position: absolute !important; /* 유령처럼 떠 있게 만듬 (레이아웃 무시) */
+  top: -50px;                   /* 화면 밖 위쪽에서 시작 */
+  pointer-events: none;         /* 마우스 클릭 방해 금지 */
+  user-select: none;            /* 텍스트 선택 방지 */
+  z-index: 1;                   /* 글자보다는 뒤, 배경보다는 앞 */
+  animation: fall linear forwards;
+}
+
+/* 3. 애니메이션 (하트가 회전하면서 내려오게) */
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg); /* 화면 바닥 너머까지 */
+    opacity: 0;
+  }
+}
+
+
+/* section */
+
+section{
+padding:80px 20px;
+text-align:center;
+}
+
+h2{
+font-size:26px;
+margin-bottom:30px;
+}
+
+/* gallery */
+
+.swiper{
+padding:0 20px;
+}
+
+.swiper-slide img{
+width:100%;
+aspect-ratio: 3/4;
+object-fit:cover;
+border-radius:16px;
+}
+
+.swiper-button-prev-custom,
+.swiper-button-next-custom{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+width:44px;
+height:44px;
+background:rgba(255,255,255,0.8);
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 4px 10px rgba(0,0,0,.2);
+z-index:10;
+cursor:pointer;
+}
+
+.swiper-button-prev-custom{
+left:10px;
+}
+
+.swiper-button-next-custom{
+right:10px;
+}
+
+.swiper-button-prev-custom svg,
+.swiper-button-next-custom svg{
+width:18px;
+height:18px;
+fill:#333;
+}
+
+
+/*calendar*/
+.calendar-box{
+min-width:320px;
+margin:0 auto;
+background:white;
+border-radius:16px;
+padding:20px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+#calendar-header{
+font-size:20px;
+font-weight:bold;
+margin-bottom:15px;
+}
+
+.calendar-grid{
+display:grid;
+grid-template-columns:repeat(7,1fr);
+gap:6px;
+}
+.calendar-grid div {
+  padding: 8px;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.calendar-grid .event-day { /* .calendar-grid를 앞에 붙여서 우선순위를 높였어요 */
+  background: #0ea5e9;
+  color: white;
+  border-radius: 50%; /* 이제 8px이 아니라 50%가 적용됩니다 */
+  font-weight: bold;
+
+  /* 크기 고정 */
+  width: 38px;
+  height: 38px;
+  
+  /* 중요: 기존 div에 걸려있던 패딩을 0으로 만들어야 찌그러지지 않아요 */
+  padding: 0; 
+  
+  /* 중앙 정렬 */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* 그리드 안에서 가로 중앙 배치 */
+  margin: 0 auto;
+}
+
+
+/*d-day*/
+.d-day-section {
+  padding: 60px 20px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.d-day-title {
+  font-family: 'Jua', sans-serif;
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.countdown-box {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.count-item {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 15px 10px;
+  min-width: 70px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.count-item span {
+  display: block;
+  font-size: 24px;
+  font-weight: bold;
+  color: #0ea5e9; /* 아까 캘린더에 쓴 sky blue 색상 */
+  margin-bottom: 5px;
+}
+
+.count-item p {
+  font-size: 10px;
+  color: #94a3b8;
+  letter-spacing: 1px;
+}
+
+
+/* map */
+
+.map-area {
+  margin-top: 20px;
+}
+
+.map-link {
+  text-decoration: none;
+  display: block;
+}
+
+.map-img {
+  width: 100%;
+  border-radius: 15px; /* 모서리를 둥글게 */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* 은은한 그림자 */
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.map-img:hover {
+  transform: scale(1.02); /* 마우스 올렸을 때 살짝 커지는 효과 */
+}
+
+.map-desc {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #666;
+  font-family: 'Gowun Dodum', sans-serif;
+}
+
+.map-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.btn-map {
+  flex: 1;
+  padding: 12px 0;
+  border-radius: 10px;
+  font-size: 13px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* 버튼 색상 커스텀 */
+.map-buttons {
+  display: flex;
+  justify-content: center; /* 버튼들을 가로 가운데 정렬 */
+  gap: 8px;               /* 버튼 사이의 간격 */
+  margin-top: 15px;
+  flex-wrap: wrap;        /* 화면이 좁아지면 자연스럽게 다음 줄로 */
+}
+
+.map-buttons a {
+  /* 핵심: 고정 너비 대신 안쪽 여백 사용 */
+  display: inline-block;  
+  width: auto;            /* 너비를 자동으로 */
+  padding: 10px 18px;     /* 위아래 10px, 좌우 18px 여백으로 상자 크기 결정 */
+  
+  /* 디자인 */
+  border-radius: 50px;    /* 알약 모양 */
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  white-space: nowrap;    /* 글자가 줄바꿈되지 않도록 고정 */
+  
+  /* 색상 및 효과 */
+  background: #f2f2f2;
+  color: #333;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* 버튼별 포인트 컬러 (선택사항) */
+.map-buttons a:nth-child(1) { background: #ffefab; } /* 카카오 */
+.map-buttons a:nth-child(2) { background: #7fd3c0; } /* 네이버 */
+.map-buttons a:nth-child(3) { background: #ffc3b8; } /* 티맵 */
+
+/* share */
+
+.share-buttons{
+display:flex;
+justify-content:center;
+gap:20px;
+}
+
+.share-btn{
+width:70px;
+height:70px;
+border-radius:50%;
+border:none;
+background:#f2f2f2;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+
+
+transition: all .25s ease;
+}
+
+.share-btn:hover{
+transform: translateY(-6px);
+box-shadow:0 8px 18px rgba(0,0,0,.15);
+}
+
+.share-btn svg{
+width:28px;
+height:28px;
+fill:#333;
+}
+
+.share-label {
+  font-size: 13px;
+  color: #666;
+  font-family: 'Gowun Dodum', sans-serif;
+  font-weight: 500;
+  padding-top: 30px;
+}
+
+/* bgm */
+
+#music-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  border: none;
+  cursor: pointer;
+  padding: 0; /* 패딩 제거 */
+}
+
+#music-btn svg {
+  width: 22px; /* 아이콘 크기 적당하게 조절 */
+  height: 22px;
+  fill: #333; /* 아이콘 색상 */
+}
+
+
+/* footer */
+
+footer{
+background:#222;
+color:white;
+text-align:center;
+padding:40px;
+font-size:12px;
+opacity:.7;
+}
+
+/* style.css에 추가 */
+
+/* 1. 처음 상태 (투명하고 살짝 아래에 있음) */
+.fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out; /* 0.8초 동안 부드럽게 */
+}
+
+/* 2. 화면에 나타났을 때 상태 (자바스크립트가 .show를 붙여줌) */
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
